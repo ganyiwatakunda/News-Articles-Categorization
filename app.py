@@ -93,10 +93,10 @@ def main():
    # Display the articles by category
     st.subheader("Articles by Category")
     selected_category = st.selectbox("Select a category", df["Category"].unique())
-    selected_articles = df[df["Category"] == selected_category][["Title", "URL"]]
+    selected_articles = df[df["Category"] == selected_category][["Text", "ArticleId"]]
 
     for index, row in selected_articles.iterrows():
-        st.write(f"[{row['Title']}]({row['URL']})")
+        st.write(f"[{row['Text']}]({row['ArticleId']})")
 
 if __name__ == '__main__':
     main()
