@@ -107,12 +107,9 @@ def main():
     
 
     for index, row in selected_articles.iterrows():
-        category = row['category']
-        if category in ['business', 'politics', 'entertainment', 'sports']:
-            sentences = word_tokenize(row['Text'])
-            truncated_text = ' '.join(sentences[:2])  # Display the first 2 sentences
-            st.write(f"{truncated_text}... [Read More]({row['ArticleId']})")
-
+        sentences = word_tokenize(row['Text'])
+        truncated_text = ' '.join(sentences[:2])  # Display the first 2 sentences
+        st.write(f"{truncated_text}... [Read More]({row['ArticleId']})")
 
 if __name__ == '__main__':
     main()
