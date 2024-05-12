@@ -31,6 +31,10 @@ df1.head()
 category = list(df1['Category'].unique())
 category
 
+categories = ['business', 'tech', 'politics', 'sport', 'entertainment']
+selected_categories = [category for category in categories if category != 'tech']
+print(selected_categories)
+
 # Text preprocessing
 def preprocess(text):
     
