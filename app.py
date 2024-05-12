@@ -100,11 +100,13 @@ def main():
     selected_category = st.selectbox("Select a category", df["Category"].unique())
     selected_articles = df[df["Category"] == selected_category][["Text", "ArticleId"]]
 
+    
 
     for index, row in selected_articles.iterrows():
-        sentences = word_tokenize(row['Text'])
-        truncated_text = ' '.join(sentences[:2])  # Display the first 2 sentences
-        st.write(f"{truncated_text}... [Read More]({row['ArticleId']})")
+              if row['Category'] in ['business', 'politics', 'entertainment', 'sports']:
+                    sentences = word_tokenize(row['Text'])
+                    truncated_text = ' '.join(sentences[:]10)  # Display the first 2 sentences
+                    st.write(f"{truncated_text}... [Read More]({row['ArticleId']})")
 
 
 if __name__ == '__main__':
