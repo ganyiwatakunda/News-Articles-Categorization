@@ -102,7 +102,7 @@ def main():
 
 
     for index, row in selected_articles.iterrows():
-        sentences = sent_tokenize(row['Text'])
+        sentences = word_tokenize(row['Text'])
         truncated_text = ' '.join(sentences[:2])  # Display the first 2 sentences
         st.write(f"{truncated_text}... [Read More]({row['ArticleId']})")
 
