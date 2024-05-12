@@ -103,7 +103,7 @@ def main():
     
 
     for index, row in selected_articles.iterrows():
-        category = row['Category']
+        category = row['category']
         if category in ['business', 'politics', 'entertainment', 'sports']:
             sentences = word_tokenize(row['Text'])
             truncated_text = ' '.join(sentences[:2])  # Display the first 2 sentences
