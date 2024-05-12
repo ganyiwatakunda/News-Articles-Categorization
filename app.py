@@ -75,64 +75,11 @@ def find_common_words(df, category):
  
     return words_counter.most_common(10)
 
-# Split data
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2)
-
-# Use TF-IDF
-tf_vec = TfidfVectorizer()
-train_features = tf_vec.fit(X_train)
-train_features = tf_vec.transform(X_train)
-test_features = tf_vec.transform(X_test)
 
 # Train and evaluate model
-def fit_eval_model(model, train_features, y_train, test_features, y_test):
-    
-    """
-    Function: train and evaluate a machine learning classifier.
-    Args:
-      model: machine learning classifier
-      train_features: train data extracted features
-      y_train: train data lables
-      test_features: train data extracted features
-      y_test: train data lables
-    Return:
-      results(dictionary): a dictionary of the model training time and classification report
-    """
-    results ={}
-    
-    # Start time
-    start = time.time()
-    # Train the model
-    model.fit(train_features, y_train)
-    # End time
-    end = time.time()
-    # Calculate the training time
-    results['train_time'] = end - start
-    
-    # Test the model
-    train_predicted = model.predict(train_features)
-    test_predicted = model.predict(test_features)
-    
-     # Classification report
-    results['classification_report'] = classification_report(y_test, test_predicted)
-        
-    return results
 
-# Initialize the models
-sv = svm.SVC()
-ab = AdaBoostClassifier(random_state = 1)
-gb = GradientBoostingClassifier(random_state = 1)
-xgb = xgboost.XGBClassifier(random_state = 1)
-tree = DecisionTreeClassifier()
-nb = MultinomialNB()
-
-
-# Fit and evaluate models
-results = {}
-for cls in [sv, ab, gb, xgb, tree, nb]:
-    cls_name = cls.__class__.__name__
-    results[cls_name] = {}
-    results[cls_name] = fit_eval_model(cls, train_features, y_train, test_features, y_test)
+    
+    
 
 
 def main():
