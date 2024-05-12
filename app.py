@@ -90,16 +90,13 @@ def main():
     # Load the dataset
     df = pd.read_csv("BBC News Train.csv")
 
-    # Display the category distribution
-    st.subheader("Category Distribution")
-    category_counts = df["Category"].value_counts()
-    st.bar_chart(category_counts)
-
-    # Display the articles by category
+   # Display the articles by category
     st.subheader("Articles by Category")
     selected_category = st.selectbox("Select a category", df["Category"].unique())
-    selected_articles = df[df["Category"] == selected_category]["Text"].tolist()
-    st.write(selected_articles)
+    selected_articles = df[df["Category"] == selected_category][["Title", "URL"]]
+
+    for index, row in selected_articles.iterrows():
+        st.write(f"[{row['Title']}]({row['URL']})")
 
 if __name__ == '__main__':
     main()
