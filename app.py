@@ -18,6 +18,9 @@ from sklearn.metrics import classification_report
 from sklearn import metrics
 import time
 
+import nltk
+nltk.download('punkt')
+
 # Read the dataset from csv file
 df1 = pd.read_csv('BBC News Train.csv')
 df1.head()
